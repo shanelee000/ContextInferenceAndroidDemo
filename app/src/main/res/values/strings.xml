@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">ContextInference</string>
+    <string name="app_name">用户行为分析</string>
+
+    <string name="decision_tree">决策树</string>
+    <string name="naive_bayes">朴素贝叶斯</string>
+
+    <string name="light">光照:</string>
+    <string name="sound">声音:</string>
+    <string name="temperature">温度:</string>
+    <string name="humidity">湿度:</string>
+    <string name="position">位置:</string>
+    <string name="movement">移动状态:</string>
+    <string name="gps">GPS:</string>
+    <string name="time">时间:</string>
+    <string-array name="attributes">
+        <item>light</item>
+        <item>sound</item>
+        <item>temperature</item>
+        <item>humidity</item>
+        <item>position</item>
+        <item>movement</item>
+        <item>gps</item>
+        <item>time</item>
+    </string-array>
+
+    <string name="walking">行走中</string>
+    <string name="running">奔跑中</string>
+    <string name="idle">空闲中</string>
+    <string name="resting">休息中</string>
+    <string-array name="context">
+        <item>walking</item>
+        <item>running</item>
+        <item>idle</item>
+        <item>resting</item>
+    </string-array>
+
 </resources>

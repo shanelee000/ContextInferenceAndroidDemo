@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.demo.shanelee.contextinference.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/get_tree"
+            android:text="获取决策树"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/start"
+            android:text="开始分析"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/light"
+            android:textIsSelectable="false"
+            android:id="@+id/light"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sound"
+            android:textIsSelectable="false"
+            android:id="@+id/sound"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:textIsSelectable="false"
+            android:id="@+id/temperature"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity"
+            android:textIsSelectable="false"
+            android:id="@+id/humidity"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/position"
+            android:textIsSelectable="false"
+            android:id="@+id/position"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/movement"
+            android:textIsSelectable="false"
+            android:id="@+id/movement"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gps"
+            android:textIsSelectable="false"
+            android:id="@+id/gps"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:textIsSelectable="false"
+            android:id="@+id/time"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/walking"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:contentDescription="描述图片"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/walking"
+            android:textAlignment="center"
+            android:textSize="@dimen/abc_text_size_medium_material"/>
+    </LinearLayout>
+</ScrollView>

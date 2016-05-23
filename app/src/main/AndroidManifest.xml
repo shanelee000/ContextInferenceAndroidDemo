@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.DecisionTreeActivity"
+            android:label="@string/decision_tree">
+        </activity>
+        <activity
+            android:name=".activity.NaiveBayesActivity"
+            android:label="@string/naive_bayes">
+        </activity>
     </application>
 
 </manifest>
