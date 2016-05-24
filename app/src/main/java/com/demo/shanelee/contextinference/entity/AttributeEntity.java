@@ -13,6 +13,15 @@ public class AttributeEntity {
     private String position;
     private String movement;
     private String gps;
+    private String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     //上下文信息
     private String context;

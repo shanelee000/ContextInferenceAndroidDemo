@@ -79,6 +79,7 @@ public class NaiveBayesUtil {
      * @return 返回上下文
      */
     public static String inferContext(AttributeEntity attr){
+
         double probOfRunning =
                 PROBABILITY_MATRIX.get("light:" + attr.getLight() + "_running") *
                 PROBABILITY_MATRIX.get("sound:" + attr.getSound() + "_running") *
@@ -86,7 +87,7 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_running") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_running") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_running") *
-                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_running") *
+//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_running") *
                 MATRIX_OF_RUNNING;
 
         double probOfWalking =
@@ -96,7 +97,7 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_walking") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_walking") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_walking") *
-                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_walking") *
+//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_walking") *
                 MATRIX_OF_WALKING;
 
         double probOfIdle =
@@ -106,7 +107,7 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_idle") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_idle") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_idle") *
-                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_idle") *
+//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_idle") *
                 MATRIX_OF_IDLE;
 
         double probOfResting =
@@ -116,7 +117,7 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_resting") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_resting") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_resting") *
-                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_resting") *
+//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_resting") *
                 MATRIX_OF_RESTING;
 
         Map<String, Double> probsMap = new HashMap<String, Double>();
@@ -313,7 +314,7 @@ public class NaiveBayesUtil {
             }
         }
 
-        PROBABILITY_MATRIX.put("movement:not  moving_" + context, numOfNotMoving / sizeOfList);
+        PROBABILITY_MATRIX.put("movement:not moving_" + context, numOfNotMoving / sizeOfList);
         PROBABILITY_MATRIX.put("movement:moving_" + context, numOfMoving / sizeOfList);
         PROBABILITY_MATRIX.put("movement:moving fast_" + context, numOfMovingFast / sizeOfList);
     }

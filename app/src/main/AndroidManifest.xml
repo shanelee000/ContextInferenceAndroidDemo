@@ -23,6 +23,10 @@
             android:name=".activity.NaiveBayesActivity"
             android:label="@string/naive_bayes">
         </activity>
+        <activity
+            android:name=".activity.TestDbActivity"
+            android:label="测试数据库数据">
+        </activity>
     </application>
 
 </manifest>

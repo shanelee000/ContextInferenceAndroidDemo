@@ -91,16 +91,18 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/walking"
+            android:layout_height="200dp"
+            android:id="@+id/img"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:contentDescription="描述图片"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/walking"
+            android:id="@+id/img_text"
             android:textAlignment="center"
-            android:textSize="@dimen/abc_text_size_medium_material"/>
+            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textStyle="bold"/>
     </LinearLayout>
 </ScrollView>

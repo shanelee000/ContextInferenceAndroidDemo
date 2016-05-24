@@ -3,6 +3,7 @@ package com.demo.shanelee.contextinference;
 
 import com.demo.shanelee.contextinference.entity.IAttributes;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -27,7 +28,7 @@ public class CommonUtil {
     }
 
     public static String[] getEnumPropNamesByClazzName(String name){
-        String fullPackageUrl = "com.demo.shanelee.ContextInference.entity." + name.trim().substring(0,1).toUpperCase() + name.trim().substring(1).toLowerCase();
+        String fullPackageUrl = "com.demo.shanelee.contextinference.entity." + name.trim().substring(0,1).toUpperCase() + name.trim().substring(1).toLowerCase();
         Class<?> c = null;
         try {
             c = Class.forName(fullPackageUrl);
@@ -40,6 +41,22 @@ public class CommonUtil {
             propNames[i] = a.getName();
         }
         return propNames;
+    }
+
+    public static int getDrawableByFileName(String name){
+        Integer resId = null;
+        Class drawable = R.drawable.class;
+        Field field = null;
+        try {
+            field = drawable.getField(name);
+            resId = field.getInt(field.getName());
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return resId;
     }
 
 }

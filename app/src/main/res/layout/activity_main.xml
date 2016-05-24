@@ -32,5 +32,11 @@
         android:layout_weight="1"
         android:id="@+id/show_bayes"
         android:text="@string/naive_bayes"/>
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/show_test"-->
+        <!--android:text="测试数据库"/>-->
 
 </LinearLayout>
