@@ -41,12 +41,12 @@ public class NaiveBayesActivity extends AppCompatActivity {
                         // TODO: 2016/5/24 每隔5或10秒钟取蓝牙数据
                         //假数据
                         AttributeEntity entity = new AttributeEntity();
-                        entity.setLight("very bright");
+                        entity.setLight("very dark");
                         entity.setSound("normal");
                         entity.setTemperature("normal");
                         entity.setHumidity("medium");
-                        entity.setPosition("standing");
-                        entity.setMovement("not moving");
+                        entity.setPosition("lying");
+                        entity.setMovement("moving");
                         entity.setGps("outdoor");
 
                         TextView lightView = (TextView) findViewById(R.id.light);

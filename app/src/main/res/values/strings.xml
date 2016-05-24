@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">用户行为分析</string>
 
-    <string name="decision_tree">决策树</string>
-    <string name="naive_bayes">朴素贝叶斯</string>
+    <string name="decision_tree">决策树模型</string>
+    <string name="naive_bayes">贝叶斯模型</string>
 
     <string name="light">光照:</string>
     <string name="sound">声音:</string>
