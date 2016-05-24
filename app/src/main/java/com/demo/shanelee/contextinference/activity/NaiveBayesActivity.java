@@ -51,35 +51,35 @@ public class NaiveBayesActivity extends AppCompatActivity {
 
                         TextView lightView = (TextView) findViewById(R.id.light);
                         if(lightView != null){
-                            lightView.setText(R.string.light + entity.getLight());
+                            lightView.setText(getResources().getString(R.string.light) + entity.getLight());
                         }
                         TextView soundView = (TextView) findViewById(R.id.sound);
                         if(soundView != null){
-                            soundView.setText(R.string.sound + entity.getSound());
+                            soundView.setText(getResources().getString(R.string.sound) + entity.getSound());
                         }
                         TextView tempView = (TextView) findViewById(R.id.temperature);
                         if(tempView != null){
-                            tempView.setText(R.string.temperature + entity.getTemperature());
+                            tempView.setText(getResources().getString(R.string.temperature) + entity.getTemperature());
                         }
                         TextView humidityView = (TextView) findViewById(R.id.humidity);
                         if(humidityView != null){
-                            humidityView.setText(R.string.humidity + entity.getHumidity());
+                            humidityView.setText(getResources().getString(R.string.humidity) + entity.getHumidity());
                         }
                         TextView positionView = (TextView) findViewById(R.id.position);
                         if(positionView != null){
-                            positionView.setText(R.string.position + entity.getPosition());
+                            positionView.setText(getResources().getString(R.string.position) + entity.getPosition());
                         }
                         TextView movementView = (TextView) findViewById(R.id.movement);
                         if(movementView != null){
-                            movementView.setText(R.string.movement + entity.getMovement());
+                            movementView.setText(getResources().getString(R.string.movement) + entity.getMovement());
                         }
                         TextView gpsView = (TextView) findViewById(R.id.gps);
                         if(gpsView != null){
-                            gpsView.setText(R.string.gps + entity.getGps());
+                            gpsView.setText(getResources().getString(R.string.gps) + entity.getGps());
                         }
                         TextView timeView = (TextView) findViewById(R.id.time);
                         if(timeView != null){
-                            timeView.setText(R.string.time + entity.getTime());
+                            timeView.setText(getResources().getString(R.string.time) + entity.getTime());
                         }
 
                         NaiveBayesUtil.handleTrainingData(AttributeSqlite.queryAll(NaiveBayesActivity.this));
