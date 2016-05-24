@@ -54,35 +54,35 @@ public class DecisionTreeActivity extends AppCompatActivity {
 
                     TextView lightView = (TextView) findViewById(R.id.light);
                     if(lightView != null){
-                        lightView.setText(lightView.getText() + entity.getLight());
+                        lightView.setText(R.string.light + entity.getLight());
                     }
                     TextView soundView = (TextView) findViewById(R.id.sound);
                     if(soundView != null){
-                        soundView.setText(soundView.getText() + entity.getSound());
+                        soundView.setText(R.string.sound + entity.getSound());
                     }
                     TextView tempView = (TextView) findViewById(R.id.temperature);
                     if(tempView != null){
-                        tempView.setText(tempView.getText() + entity.getTemperature());
+                        tempView.setText(R.string.temperature + entity.getTemperature());
                     }
                     TextView humidityView = (TextView) findViewById(R.id.humidity);
                     if(humidityView != null){
-                        humidityView.setText(humidityView.getText() + entity.getHumidity());
+                        humidityView.setText(R.string.humidity + entity.getHumidity());
                     }
                     TextView positionView = (TextView) findViewById(R.id.position);
                     if(positionView != null){
-                        positionView.setText(positionView.getText() + entity.getPosition());
+                        positionView.setText(R.string.position + entity.getPosition());
                     }
                     TextView movementView = (TextView) findViewById(R.id.movement);
                     if(movementView != null){
-                        movementView.setText(movementView.getText() + entity.getMovement());
+                        movementView.setText(R.string.movement + entity.getMovement());
                     }
                     TextView gpsView = (TextView) findViewById(R.id.gps);
                     if(gpsView != null){
-                        gpsView.setText(gpsView.getText() + entity.getGps());
+                        gpsView.setText(R.string.gps + entity.getGps());
                     }
                     TextView timeView = (TextView) findViewById(R.id.time);
                     if(timeView != null){
-                        timeView.setText(timeView.getText() + entity.getTime());
+                        timeView.setText(R.string.time + entity.getTime());
                     }
                     String context = DecisionTreeUtil.inferContext(DecisionTreeUtil.getDecisionTree(AttributeSqlite.queryAll(DecisionTreeActivity.this)), entity);
 //                    String[] attrNames = getResources().getStringArray(R.array.attributes);
