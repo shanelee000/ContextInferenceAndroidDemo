@@ -28,5 +28,7 @@
             android:label="测试数据库数据">
         </activity>
     </application>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
 </manifest>
