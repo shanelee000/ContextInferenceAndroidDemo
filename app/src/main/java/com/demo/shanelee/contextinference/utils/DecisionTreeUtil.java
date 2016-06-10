@@ -4,6 +4,9 @@ import com.demo.shanelee.contextinference.CommonUtil;
 import com.demo.shanelee.contextinference.entity.AttributeEntity;
 import com.demo.shanelee.contextinference.entity.TreeEntity;
 
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -36,7 +39,6 @@ public class DecisionTreeUtil {
                         context = inferContext(child, attr);
                     }
                 }
-
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -44,7 +46,6 @@ public class DecisionTreeUtil {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-
         } else {
             context = tree.getAttrName();
         }
@@ -75,7 +76,8 @@ public class DecisionTreeUtil {
         attrNames.add("humidity");
         attrNames.add("position");
         attrNames.add("movement");
-//        attrNames.add("gps");
+        attrNames.add("gps");
+        attrNames.add("time");
 
         TreeEntity tree = null;
         try {
@@ -90,6 +92,7 @@ public class DecisionTreeUtil {
             e.printStackTrace();
         }
 
+        System.out.println();
         return tree;
     }
 
@@ -151,6 +154,8 @@ public class DecisionTreeUtil {
             newListMap = buildMovementListMap(attrList);
         } else if("gps".equals(featureName)) {
             newListMap = buildGpsListMap(attrList);
+        } else if("time".equals(featureName)) {
+            newListMap = buildTimeListMap(attrList);
         }
 
         double conditionEntropyOfDataSet = 0;
@@ -203,7 +208,6 @@ public class DecisionTreeUtil {
 
         //获取该特征名下的所有特征枚举值
         String[] propNames = CommonUtil.getEnumPropNamesByClazzName(maxKey);
-
 
         // TODO: 2016/5/17 判断是否已经取完所有特征，即判断attrNames是否为空，若为空，则返回叶节点，否则，继续构造
         if(attrNames.isEmpty()){
@@ -436,6 +440,27 @@ public class DecisionTreeUtil {
 
         newListMap.put("indoor", attrOfIndoor);
         newListMap.put("outdoor", attrOfOutdoor);
+        return newListMap;
+    }
+
+    private static Map<String, List<AttributeEntity>> buildTimeListMap(List<AttributeEntity> attrList){
+        Map<String, List<AttributeEntity>> newListMap = new HashMap<>();
+        List<AttributeEntity> attrOfMorning = new ArrayList<>();
+        List<AttributeEntity> attrOfAfternoon = new ArrayList<>();
+        List<AttributeEntity> attrOfNight = new ArrayList<>();
+
+        for (AttributeEntity attr : attrList) {
+            if("morning".equals(attr.getTime())){
+                attrOfMorning.add(attr);
+            } else if ("afternoon".equals(attr.getTime())){
+                attrOfAfternoon.add(attr);
+            } else if ("night".equals(attr.getTime())){
+                attrOfNight.add(attr);
+            }
+        }
+        newListMap.put("morning", attrOfMorning);
+        newListMap.put("afternoon", attrOfAfternoon);
+        newListMap.put("night", attrOfNight);
         return newListMap;
     }
 

@@ -34,5 +34,5 @@
         <item>resting</item>
     </string-array>
 
-    <integer name="db_version">2</integer>
+    <integer name="db_version">2131427335</integer>
 </resources>

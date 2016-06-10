@@ -5,15 +5,26 @@ package com.demo.shanelee.contextinference.entity;
  */
 public class AttributeEntity {
 
+    //唯一标识
     private Integer id;
+    //光照
     private String light;
+    //声音
     private String sound;
+    //温度
     private String temperature;
+    //湿度
     private String humidity;
+    //位置
     private String position;
+    //移动状态
     private String movement;
+    //GPS
     private String gps;
+    //时间
     private String time;
+    //上下文信息
+    private String context;
 
     public String getTime() {
         return time;
@@ -23,8 +34,6 @@ public class AttributeEntity {
         this.time = time;
     }
 
-    //上下文信息
-    private String context;
 
     public Integer getId() {
         return id;

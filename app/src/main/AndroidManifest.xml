@@ -27,6 +27,13 @@
             android:name=".activity.TestDbActivity"
             android:label="测试数据库数据">
         </activity>
+        <activity
+            android:name=".activity.TrainDataActivity"
+            android:label="训练数据">
+        </activity>
+        <activity android:name=".activity.ShowTreeActivity" android:label="决策树">
+
+        </activity>
     </application>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>

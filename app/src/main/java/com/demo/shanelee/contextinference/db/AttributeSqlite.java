@@ -19,7 +19,7 @@ public class AttributeSqlite {
 
     public static List<AttributeEntity> queryAll(Context context){
         List<AttributeEntity> list = new ArrayList<>();
-        AttributeDbHelper helper = new AttributeDbHelper(context, "attribute.db", null, R.integer.db_version);
+        AttributeDbHelper helper = new AttributeDbHelper(context, "attribute.db", null, 2131427335);
         SQLiteDatabase db = helper.getWritableDatabase();
 
         StringBuilder sb = new StringBuilder();
@@ -59,7 +59,7 @@ public class AttributeSqlite {
     }
 
     public static boolean insert(Context context, AttributeEntity attr){
-        AttributeDbHelper helper = new AttributeDbHelper(context, "attribute.db", null, R.integer.db_version);
+        AttributeDbHelper helper = new AttributeDbHelper(context, "attribute.db", null, 2131427335);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("light", attr.getLight());

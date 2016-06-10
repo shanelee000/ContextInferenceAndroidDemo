@@ -15,13 +15,17 @@ public class NaiveBayesUtil {
 
     public static Map<String, Double> PROBABILITY_MATRIX = new HashMap<String, Double>();   //条件概率矩阵
     public static int SIZE_OF_DATA; //训练数据数量
-    public static List<AttributeEntity> attrsOfRunning = new ArrayList<AttributeEntity>();
-    public static List<AttributeEntity> attrsOfWalking = new ArrayList<AttributeEntity>();
-    public static List<AttributeEntity> attrsOfIdle = new ArrayList<AttributeEntity>();
-    public static List<AttributeEntity> attrsOfResting = new ArrayList<AttributeEntity>();
+    public static List<AttributeEntity> attrsOfRunning = new ArrayList<AttributeEntity>();  //奔跑状态数据集
+    public static List<AttributeEntity> attrsOfWalking = new ArrayList<AttributeEntity>();  //行走状态数据集
+    public static List<AttributeEntity> attrsOfIdle = new ArrayList<AttributeEntity>(); //空闲状态数据集
+    public static List<AttributeEntity> attrsOfResting = new ArrayList<AttributeEntity>();  //休息状态数据集
+    //奔跑状态的发生概率
     public static double MATRIX_OF_RUNNING;
+    //行走状态的发生概率
     public static double MATRIX_OF_WALKING;
+    //空闲状态的发生概率
     public static double MATRIX_OF_IDLE;
+    //休息状态的发生概率
     public static double MATRIX_OF_RESTING;
 
     /**
@@ -41,6 +45,7 @@ public class NaiveBayesUtil {
         buildPositionMap(attrsOfRunning, "running");
         buildMovementMap(attrsOfRunning, "running");
         buildGpsMap(attrsOfRunning, "running");
+        buildTimeMap(attrsOfRunning, "running");
 
         buildLightMap(attrsOfWalking, "walking");
         buildSoundMap(attrsOfWalking, "walking");
@@ -49,6 +54,7 @@ public class NaiveBayesUtil {
         buildPositionMap(attrsOfWalking, "walking");
         buildMovementMap(attrsOfWalking, "walking");
         buildGpsMap(attrsOfWalking, "walking");
+        buildTimeMap(attrsOfWalking, "walking");
 
         buildLightMap(attrsOfIdle, "idle");
         buildSoundMap(attrsOfIdle, "idle");
@@ -57,6 +63,7 @@ public class NaiveBayesUtil {
         buildPositionMap(attrsOfIdle, "idle");
         buildMovementMap(attrsOfIdle, "idle");
         buildGpsMap(attrsOfIdle, "idle");
+        buildTimeMap(attrsOfIdle, "idle");
 
         buildLightMap(attrsOfResting, "resting");
         buildSoundMap(attrsOfResting, "resting");
@@ -65,6 +72,7 @@ public class NaiveBayesUtil {
         buildPositionMap(attrsOfResting, "resting");
         buildMovementMap(attrsOfResting, "resting");
         buildGpsMap(attrsOfResting, "resting");
+        buildTimeMap(attrsOfResting, "resting");
 
         MATRIX_OF_RUNNING = (double)attrsOfRunning.size() / SIZE_OF_DATA;
         MATRIX_OF_WALKING = (double)attrsOfWalking.size() / SIZE_OF_DATA;
@@ -87,7 +95,8 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_running") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_running") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_running") *
-//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_running") *
+                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_running") *
+                PROBABILITY_MATRIX.get("time:" + attr.getTime() + "_running") *
                 MATRIX_OF_RUNNING;
 
         double probOfWalking =
@@ -97,7 +106,8 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_walking") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_walking") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_walking") *
-//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_walking") *
+                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_walking") *
+                PROBABILITY_MATRIX.get("time:" + attr.getTime() + "_walking") *
                 MATRIX_OF_WALKING;
 
         double probOfIdle =
@@ -107,7 +117,8 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_idle") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_idle") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_idle") *
-//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_idle") *
+                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_idle") *
+                PROBABILITY_MATRIX.get("time:" + attr.getTime() + "_idle") *
                 MATRIX_OF_IDLE;
 
         double probOfResting =
@@ -117,7 +128,8 @@ public class NaiveBayesUtil {
                 PROBABILITY_MATRIX.get("humidity:" + attr.getHumidity() + "_resting") *
                 PROBABILITY_MATRIX.get("position:" + attr.getPosition() + "_resting") *
                 PROBABILITY_MATRIX.get("movement:" + attr.getMovement() + "_resting") *
-//                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_resting") *
+                PROBABILITY_MATRIX.get("gps:" + attr.getGps() + "_resting") *
+                PROBABILITY_MATRIX.get("time:" + attr.getTime() + "_resting") *
                 MATRIX_OF_RESTING;
 
         Map<String, Double> probsMap = new HashMap<String, Double>();
@@ -336,6 +348,30 @@ public class NaiveBayesUtil {
 
         PROBABILITY_MATRIX.put("gps:indoor_" + context, numOfIndoor / sizeOfList);
         PROBABILITY_MATRIX.put("gps:outdoor_" + context, numOfOutdoor / sizeOfList);
+    }
+
+    private static void buildTimeMap(List<AttributeEntity> attrList, String context){
+
+        double numOfMorning = 0;
+        double numOfNight = 0;
+        double numOfAfternoon = 0;
+        int sizeOfList = attrList.size();
+
+        for (AttributeEntity attr : attrList){
+            if("morning".equals(attr.getTime())){
+                numOfMorning++;
+            }
+            if("night".equals(attr.getTime())){
+                numOfNight++;
+            }
+            if("afternoon".equals(attr.getTime())){
+                numOfAfternoon++;
+            }
+
+            PROBABILITY_MATRIX.put("time:morning_" + context, numOfMorning / sizeOfList);
+            PROBABILITY_MATRIX.put("time:night_" + context, numOfNight / sizeOfList);
+            PROBABILITY_MATRIX.put("time:afternoon_" + context, numOfAfternoon / sizeOfList);
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.demo.shanelee.contextinference.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +31,10 @@ public class DecisionTreeActivity extends AppCompatActivity {
             getTreeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TreeEntity tree = DecisionTreeUtil.getDecisionTree(AttributeSqlite.queryAll(DecisionTreeActivity.this));
-                    Toast.makeText(DecisionTreeActivity.this, "构造完成：" + tree.toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DecisionTreeActivity.this, ShowTreeActivity.class);
+                    startActivity(intent);
+//                    TreeEntity tree = DecisionTreeUtil.getDecisionTree(AttributeSqlite.queryAll(DecisionTreeActivity.this));
+//                    Toast.makeText(DecisionTreeActivity.this, "构造完成：" + tree.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -41,16 +44,15 @@ public class DecisionTreeActivity extends AppCompatActivity {
             startBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // TODO: 2016/5/24 每隔5或10秒钟取蓝牙数据
-                    //假数据
                     AttributeEntity entity = new AttributeEntity();
-                    entity.setLight("very bright");
+                    entity.setLight("very dark");
                     entity.setSound("normal");
                     entity.setTemperature("normal");
                     entity.setHumidity("medium");
-                    entity.setPosition("standing");
-                    entity.setMovement("not moving");
+                    entity.setPosition("lying");
+                    entity.setMovement("moving");
                     entity.setGps("outdoor");
+                    entity.setTime("afternoon");
 
                     TextView lightView = (TextView) findViewById(R.id.light);
                     if(lightView != null){
@@ -85,7 +87,6 @@ public class DecisionTreeActivity extends AppCompatActivity {
                         timeView.setText(getResources().getString(R.string.time) + entity.getTime());
                     }
                     String context = DecisionTreeUtil.inferContext(DecisionTreeUtil.getDecisionTree(AttributeSqlite.queryAll(DecisionTreeActivity.this)), entity);
-//                    String[] attrNames = getResources().getStringArray(R.array.attributes);
                     ImageView imgView = (ImageView) findViewById(R.id.img);
                     TextView imgText = (TextView) findViewById(R.id.img_text);
                     if (imgView != null && imgText != null) {

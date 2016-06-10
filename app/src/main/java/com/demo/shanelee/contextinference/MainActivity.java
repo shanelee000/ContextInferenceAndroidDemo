@@ -21,11 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        dbHelper = new DBManager(this);
-//        dbHelper.openDatabase();
-//        dbHelper.closeDatabase();
-
         Button showTreeBtn = (Button) findViewById(R.id.show_tree);
         if(showTreeBtn != null){
             showTreeBtn.setOnClickListener(new View.OnClickListener() {
